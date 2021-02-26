@@ -7,7 +7,7 @@ class Api::ActorsController < ApplicationController
 
   def show
     @actor = Actor.find_by(id: params[:id])
-    @actor = params[:id]
+    @id = params[:id]
     render "show.json.jb"
   end
 
