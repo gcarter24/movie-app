@@ -2,17 +2,38 @@ class Api::MoviesController < ApplicationController
   require "http"
 
   def index
-    @movies = Movie.select([:id, :title, :year, :plot])
-    render "movies.json.jb"
+    @movies = Movie.all
+    #@movies = Movie.select([:id, :title, :year, :plot])
+    render "index.json.jb"
   end
 
-  def movie
-    i = 0
-    while i <= rand(1..Movie.all.length)
-      p i
-      i += 1
-    end
-    @movie = Movie.find_by(id: "#{i}")
-    render "movie.json.jb"
+  def show
+    @movie = Movie.find_by(id: params[:id])
+    render "show.json.jb"
+  end
+
+  def create
+    @movie = Movie.new(
+      title: params[:title],
+      year: params[:year],
+      plot: params[:plot],
+    )
+    #@movie.save
+    render "show.json.jb"
+  end
+
+  def update
+    @movie = Movie.find_by(id: params[:id])
+    @movie.title = params[:title] || @movie.title
+    @movie.year = params[:year] || @movie.year
+    @movie.plot = params[:plot] || @movie.plot
+    #@movie.save
+    render "show.json.jb"
+  end
+
+  def destroy
+    @movie = Movie.find_by(id: params[:id])
+    #@movie.destroy
+    render "show.json.jb"
   end
 end

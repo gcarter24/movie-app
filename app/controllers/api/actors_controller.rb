@@ -1,7 +1,38 @@
 class Api::ActorsController < ApplicationController
   def index
-    @actor = Actor.select([:id, :first_name, :last_name, :known_for]).last
+    @actors = Actor.all
+    #@actors = Actor.select([:id, :first_name, :last_name, :known_for])
+    render "index.json.jb"
+  end
 
-    render "actor.json.jb"
+  def show
+    @actor = Actor.find_by(id: params[:id])
+    @actor = params[:id]
+    render "show.json.jb"
+  end
+
+  def create
+    @actor = Actor.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      known_for: params[:known_for],
+    )
+    #@actor.save
+    render "show.json.jb"
+  end
+
+  def update
+    @actor = Actor.find_by(id: params[:id])
+    @actor.first_name = params[:first_name] || @actor.first_name
+    @actor.last_name = params[:last_name] || @actor.last_name
+    @actor.known_for = params[:known_for] || @actor.known_for
+    #@actor.save
+    render "show.json.jb"
+  end
+
+  def destroy
+    @actor = Actor.find_by(id: params[:id])
+    #@actor.destroy
+    render "show.json.jb"
   end
 end
