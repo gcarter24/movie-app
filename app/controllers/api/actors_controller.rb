@@ -7,7 +7,6 @@ class Api::ActorsController < ApplicationController
 
   def show
     @actor = Actor.find_by(id: params[:id])
-    @id = params[:id]
     render "show.json.jb"
   end
 
@@ -17,7 +16,7 @@ class Api::ActorsController < ApplicationController
       last_name: params[:last_name],
       known_for: params[:known_for],
     )
-    #@actor.save
+    @actor.save
     render "show.json.jb"
   end
 
@@ -26,13 +25,13 @@ class Api::ActorsController < ApplicationController
     @actor.first_name = params[:first_name] || @actor.first_name
     @actor.last_name = params[:last_name] || @actor.last_name
     @actor.known_for = params[:known_for] || @actor.known_for
-    #@actor.save
+    @actor.save
     render "show.json.jb"
   end
 
   def destroy
     @actor = Actor.find_by(id: params[:id])
-    #@actor.destroy
+    @actor.destroy
     render "show.json.jb"
   end
 end

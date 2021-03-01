@@ -5,13 +5,8 @@ Rails.application.routes.draw do
   # EXAMPLE JSON ROUTE WITH API NAMESPACE
   namespace :api do
     #actor routes
-    #get "/actors" => "actors#index"
-
-    #segment param
+    get "/actors" => "actors#index"
     get "/actors/:id" => "actors#show"
-    #query param
-    get "/actors" => "actors#show"
-
     post "/actors" => "actors#create"
     patch "/actors/:id" => "actors#update"
     delete "/actors/:id" => "actors#destroy"
