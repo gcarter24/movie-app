@@ -2,8 +2,8 @@ class Api::MoviesController < ApplicationController
   require "http"
 
   def index
-    @movies = Movie.all
     #@movies = Movie.select([:id, :title, :year, :plot])
+    @movies = Movie.where(english: true)
     render "index.json.jb"
   end
 
