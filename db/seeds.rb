@@ -29,3 +29,11 @@ actor = Actor.new({ first_name: "Benedict", last_name: "Cumberbatch", known_for:
 #   plot = FFaker::Book.description
 #   Movie.create(title: title, year: year, plot: plot)
 # end
+100.times do
+  first_name = FFaker::Name.first_name
+  last_name = FFaker::Name.last_name
+  known_for = FFaker::Movie.title
+  gender = FFaker::Gender.maybe
+  age = rand(18..99)
+  Actor.create(first_name: first_name, last_name: last_name, known_for: known_for, gender: gender, age: age)
+end
