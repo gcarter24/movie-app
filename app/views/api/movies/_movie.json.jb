@@ -2,5 +2,5 @@
   title: movie.title,
   year: movie.year,
   plot: movie.plot,
-  director: movie.director
-}
+  director: movie.director,
+  starring: movie.actors.select([:id, :first_name, :last_name]) }

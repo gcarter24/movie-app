@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 "require ffaker"
-actor = Actor.new({ first_name: "Benedict", last_name: "Cumberbatch", known_for: "Sherlock" })
+#actor = Actor.new({ first_name: "Benedict", last_name: "Cumberbatch", known_for: "Sherlock" })
 #actor.save
 
 #Actor.create(first_name: "Dan", last_name: "Ackroyd", known_for: "Ghostbusters")
@@ -29,11 +29,27 @@ actor = Actor.new({ first_name: "Benedict", last_name: "Cumberbatch", known_for:
 #   plot = FFaker::Book.description
 #   Movie.create(title: title, year: year, plot: plot)
 # end
-100.times do
-  first_name = FFaker::Name.first_name
-  last_name = FFaker::Name.last_name
-  known_for = FFaker::Movie.title
-  gender = FFaker::Gender.maybe
-  age = rand(18..99)
-  Actor.create(first_name: first_name, last_name: last_name, known_for: known_for, gender: gender, age: age)
-end
+# 100.times do
+#   first_name = FFaker::Name.first_name
+#   last_name = FFaker::Name.last_name
+#   known_for = FFaker::Movie.title
+#   gender = FFaker::Gender.maybe
+#   age = rand(18..99)
+#   Actor.create(first_name: first_name, last_name: last_name, known_for: known_for, gender: gender, age: age)
+# end
+
+# actors_without_movie_id = Actor.where(movie_id: nil)
+
+# actors_without_movie_id.each do |actor|
+#   random_movie_id = Movie.all.sample.id
+#   actor.movie_id = random_movie_id
+#   actor.save
+# end
+
+# movies_without_directors = Movie.where(director: nil)
+
+# movies_without_directors.each do |movie|
+#   random_director = FFaker::Name.name
+#   movie.director = random_director
+#   movie.save
+# end
