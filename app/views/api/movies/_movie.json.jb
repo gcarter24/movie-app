@@ -1,5 +1,6 @@
 { id: movie.id,
   title: movie.title,
+  genre: movie.genres.select([:id, :name]),
   year: movie.year,
   plot: movie.plot,
   director: movie.director,
